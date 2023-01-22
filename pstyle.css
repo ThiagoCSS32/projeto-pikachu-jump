@@ -1,0 +1,93 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+header{
+    text-align: center;
+    background: linear-gradient(90deg, rgb(65, 137, 219), rgb(40, 40, 44));
+    color: rgb(237, 255, 71);
+    font-family:impact;
+    font-size: large;
+    font-weight: 700;
+    text-shadow: 0 0 2px blue;
+    text-shadow: 0 0 5px rgb(22, 22, 163);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.game_board{
+    position:relative; /* posição relativa para que os demais itens de imagens respeitam as bordas */
+    width: 100%;
+    height: 500px;
+    border-bottom: 40px solid rgb(15, 102, 37);
+    margin: 0 auto; /*Centralizar a div na pagina.*/
+    overflow: hidden /*propriedade e valor hidden para esconder tudo que saia de dentro da div*/;
+    background: linear-gradient(rgb(72, 161, 235), rgb(199, 230, 230));
+}
+.pedra{
+    position:absolute; /*defini que a imagem fixe sem que atrapalhe as demais imagens*/
+    bottom: -10PX; /*ficar em baixo*/
+    width:80px; /*definindo o tamanho da pedra*/
+    /*right: 0; para sinalizar que a pedra começa a se mover do canto direito ou seja o 
+    ponto 0 so para marcar depois não será usado*/ 
+    animation: pedra_animation 1.5s infinite linear;
+    /*Depos de definido a animação com o @keyframe, usamos essa animação através da propriedade 
+    animation com nome, (3s) tempo de duração, infinite para que fique repetindo infinitamente, 
+    linear para que o fluxo do movimento seja unico.*/
+}
+@keyframes pedra_animation { /*@keyframe para criar possivéis animações com os elementos*/
+    from {
+        right:-80px;
+    }
+    to {
+        right: 100%;
+    }
+
+}
+
+.pikachu{
+    position:absolute; /*Posição absolute para que nenhuma imagem interfira na outra*/
+    bottom:0;
+    left: 60px;
+    width: 80px;
+    /*aqui para o personagem foi criado uma animation que foi transferida para a classe abaixo jump pós sera acionada via js.*/
+    
+}
+.jump{
+    animation: pikachu_jump 500ms ease-out; /*Novamente o tempo da animação, se repetira infinitamente, e o ease-out para finalizar de forma mais suave a saida da img,*/
+}
+@keyframes pikachu_jump { /*Aqui foi definido o pulo do personagem inicio meio e fim.  */
+    0%{
+        bottom: 0;
+    }
+    40%{
+        bottom:140px;
+    }
+    50%{
+        bottom:150px;
+    }
+    60%{
+        bottom:140px;
+    }
+    
+    100%{
+        bottom: 0;
+    }
+}
+
+.nuvens{
+    position:absolute;
+    width: 1000px;
+    height: 600px;
+    animation: nuvens 20s infinite linear;
+}
+@keyframes nuvens {
+    from{
+        right: -900px;
+    }
+    to{
+        right: 100%
+    }
+    
+}
